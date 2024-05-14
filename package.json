@@ -1,0 +1,23 @@
+{
+    "name": "extra-contracts",
+    "version": "0.0.1",
+    "description": "Smart contracts of Extra Finance",
+    "main": "index.ts",
+    "repository": "git@github.com:ExtraFi/extra-contracts.git",
+    "author": "ExtraFi Team",
+    "license": "MIT",
+    "scripts": {
+        "compile": "npx hardhat compile"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": false
+    },
+    "devDependencies": {
+        "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+        "hardhat": "^2.22.3",
+        "typescript": "^5.4.5"
+    }
+}
