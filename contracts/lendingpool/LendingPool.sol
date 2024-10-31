@@ -17,7 +17,7 @@ import "../libraries/logic/ReserveKey.sol";
 import "../libraries/logic/ETokenDeployer.sol";
 import "../libraries/logic/StakingRewardsDeployer.sol";
 
-import "../AddressRegistry.sol";
+import "../address-registry/AddressRegistry.sol";
 import "../Payments.sol";
 
 contract LendingPool is ILendingPool, Ownable, Payments, ReentrancyGuard {

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./external/openzeppelin/contracts/access/Ownable.sol";
-import "./interfaces/IAddressRegistry.sol";
+import "../external/openzeppelin/contracts/access/Ownable.sol";
+import "../interfaces/IAddressRegistry.sol";
 
 contract AddressRegistry is IAddressRegistry, Ownable {
     mapping(uint256 => address) libraryAndContractAddresses;

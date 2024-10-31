@@ -1,3 +1,4 @@
+import "@nomicfoundation/hardhat-foundry"
 import { HardhatUserConfig } from "hardhat/config"
 
 export const RPC_URL = "http://127.0.0.1:8545"
