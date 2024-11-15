@@ -203,8 +203,8 @@ library ReserveLogic {
 
             reserve.borrowingIndex = newBorrowingIndex;
             reserve.totalBorrows = newTotalBorrows;
-            reserve.lastUpdateTimestamp = uint128(block.timestamp);
         }
+        reserve.lastUpdateTimestamp = uint128(block.timestamp);
     }
 
     /**
