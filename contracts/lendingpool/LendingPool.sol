@@ -532,6 +532,10 @@ contract LendingPool is ILendingPool, Ownable, Payments, ReentrancyGuard {
         uint16 borrowingRateB,
         uint16 maxBorrowingRate
     ) internal {
+        require(utilizationA < utilizationB, "Utilization A must be less than Utilization B");
+        require(utilizationB < Constants.PERCENT_100, "Borrowing Rate A must be less than Borrowing Rate B");
+        reserve.updateState(getTreasury());
+
         // (0%, 0%) -> (utilizationA, borrowingRateA) -> (utilizationB, borrowingRateB) -> (100%, maxBorrowingRate)
         reserve.borrowingRateConfig.utilizationA = uint128(
             Precision.FACTOR1E18.mul(utilizationA).div(Constants.PERCENT_100)
@@ -551,6 +555,8 @@ contract LendingPool is ILendingPool, Ownable, Payments, ReentrancyGuard {
                 Constants.PERCENT_100
             )
         );
+
+        reserve.updateInterestRates();
     }
 
     function getReserve(
@@ -780,8 +786,10 @@ contract LendingPool is ILendingPool, Ownable, Payments, ReentrancyGuard {
     ) public onlyOwner notPaused {
         require(_rate <= Constants.PERCENT_100, "invalid percent");
         DataTypes.ReserveData storage reserve = reserves[reserveId];
-        reserve.reserveFeeRate = _rate;
 
+        reserve.updateState(getTreasury());
+        reserve.reserveFeeRate = _rate;
+        reserve.updateInterestRates();
         emit SetReserveFeeRate(reserveId, _rate);
     }
 
