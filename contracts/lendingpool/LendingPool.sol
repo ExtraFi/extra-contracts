@@ -533,7 +533,7 @@ contract LendingPool is ILendingPool, Ownable, Payments, ReentrancyGuard {
         uint16 maxBorrowingRate
     ) internal {
         require(utilizationA < utilizationB, "Utilization A must be less than Utilization B");
-        require(utilizationB < Constants.PERCENT_100, "Borrowing Rate A must be less than Borrowing Rate B");
+        require(utilizationB < Constants.PERCENT_100, "Utilization B must be less than 100%");
         reserve.updateState(getTreasury());
 
         // (0%, 0%) -> (utilizationA, borrowingRateA) -> (utilizationB, borrowingRateB) -> (100%, maxBorrowingRate)
