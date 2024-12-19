@@ -138,7 +138,7 @@ contract StakingRewards is Ownable, IStakingRewards {
 
         rewardData[rewardToken].startTime = startTime;
         rewardData[rewardToken].endTime = endTime;
-        rewardData[rewardToken].lastUpdateTime = block.timestamp;
+        rewardData[rewardToken].lastUpdateTime = startTime;
         rewardData[rewardToken].rewardRate =
             totalRewards /
             (endTime - startTime);
